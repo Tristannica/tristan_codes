@@ -1,0 +1,214 @@
+classes: {
+  header: {
+    style: {
+      font-size: 28
+      bold: true
+    }
+  }
+
+  subheader: {
+    style: {
+      font-size: 23
+    }
+  }
+
+  lightBlueConnection: {
+    style.stroke: "#05aff8"
+  }
+
+  purpleConnection: {
+    style.stroke: "#9111f5"
+  }
+
+  blackConnection: {
+    style: {
+      stroke-width: 3
+      stroke-dash: 3
+      stroke: "#023324"
+    }
+  }
+
+  orangeConnection: {
+    style: {
+      stroke: "#f79007"
+      stroke-dash: 3
+      stroke-width: 3
+    }
+  }
+
+  S3Bucket: {
+    icon: https://icons.terrastruct.com/aws/Storage/Amazon-Simple-Storage-Service-S3.svg
+    label: S3 Bucket
+    shape: image
+    style.font-size: 25
+  }
+
+  Route53: {
+    icon: https://icons.terrastruct.com/aws/Networking%20&%20Content%20Delivery/Amazon-Route-53_light-bg.svg
+    label: Route53 DNS
+    shape: image
+    style.font-size: 25
+  }
+
+  Cloudfront: {
+    icon: https://icons.terrastruct.com/aws/Networking%20&%20Content%20Delivery/Amazon-CloudFront.svg
+    label: Cloudfront CDN
+    shape: image
+    style.font-size: 25
+  }
+
+  ELB: {
+    icon: https://icons.terrastruct.com/aws/Networking%20&%20Content%20Delivery/Elastic-Load-Balancing_light-bg.svg
+    label: ELB
+    shape: image
+    style.font-size: 25
+  }
+
+  AutoScaling: {
+    icon: https://icons.terrastruct.com/aws/_Group%20Icons/Auto-Scaling_light-bg.svg
+    label: Auto Scaling
+    shape: image
+    style.font-size: 25
+  }
+
+  WebServer: {
+    icon: https://icons.terrastruct.com/aws/Compute/_Instance/Amazon-EC2_Instances_light-bg.svg
+    label: Web Servers
+    shape: image
+    style.font-size: 25
+  }
+
+  AppServer: {
+    icon: https://icons.terrastruct.com/aws/Compute/_Instance/Amazon-EC2_Instances_light-bg.svg
+    label: App Servers
+    shape: image
+    style.font-size: 25
+  }
+
+  RDSPrimary: {
+    icon: https://icons.terrastruct.com/aws/Database/Amazon-RDS_light-bg.svg
+    label: RDS Primary
+    shape: image
+    style.font-size: 25
+  }
+
+  RDSMultiAZ: {
+    icon: https://icons.terrastruct.com/aws/Database/Amazon-RDS_light-bg.svg
+    label: RDS Multi-AZ
+    shape: image
+    style.font-size: 25
+  }
+
+  SubnetIcon: {
+    icon: https://icons.terrastruct.com/aws/_Group%20Icons/VPC-subnet-private_light-bg.svg
+  }
+
+  SubnetIcon2: {
+    icon: https://icons.terrastruct.com/aws/_Group%20Icons/VPC-subnet-private_light-bg.svg
+  }
+}
+
+Users1: {
+  icon: https://icons.terrastruct.com/aws/_General/Users_light-bg.svg
+  shape: image
+  label: ""
+}
+
+Users2: {
+  icon: https://icons.terrastruct.com/aws/_General/Users_light-bg.svg
+  shape: image
+  label: ""
+}
+
+AWSCloud: AWS Cloud {
+  icon: https://cdn.cookielaw.org/logos/5d15bcc9-9f99-4003-8a7d-c65296069b77/0f72adbd-dfa3-4ef1-b687-e87711e58317/443e9048-2b5f-4c28-95fe-bbc47811e4ad/aws.png
+  class: header
+
+  Route53.class: Route53
+  S3.class: S3Bucket
+  Cloudfront.class: Cloudfront
+
+  VPC: VPC\n 10.0.0.0/16 {
+    icon: https://icons.terrastruct.com/aws/_Group%20Icons/Virtual-private-cloud-VPC_light-bg.svg
+    class: header
+
+    ELB1.class: ELB
+    ELB2.class: ELB
+
+    AutoScaling1.class: AutoScaling
+    AutoScaling2.class: AutoScaling
+
+    AvailabilityZoneA: Availability Zone A {
+      class: subheader
+
+      WebSubnet: Web Subnet 1 \n 10.0.0.0/24 {
+        class: [SubnetIcon; subheader]
+        WebServer.class: WebServer
+      }
+
+      AppSubnet: App Subnet 1 \n 10.0.2.0/24 {
+        class: [SubnetIcon; subheader]
+        AppServer.class: AppServer
+      }
+
+      RDSSubnet: RDS Subnet 1\n 10.0.4/24 {
+        class: [SubnetIcon2; subheader]
+        RDSPrimary.class: RDSPrimary
+      }
+
+      AppSubnet.AppServer -> RDSSubnet.RDSPrimary: {class: lightBlueConnection}
+    }
+
+    AvailabilityZoneB: Availability Zone B {
+      class: subheader
+
+      WebSubnet: Web Subnet 2 \n 10.0.1.0/24 {
+        class: [SubnetIcon; subheader]
+        WebServer.class: WebServer
+      }
+
+      AppSubnet: App Subnet 2 \n 10.0.3.0/24 {
+        class: [SubnetIcon; subheader]
+        AppServer.class: AppServer
+      }
+
+      RDSSubnet: RDS Subnet 2\n 10.0.4/24 {
+        class: [SubnetIcon2; subheader]
+        RDSPrimary.class: RDSMultiAZ
+      }
+    }
+    AvailabilityZoneA.RDSSubnet.RDSPrimary -> AvailabilityZoneB.RDSSubnet.RDSPrimary: Synchronous Replication {
+      class: blackConnection
+      style.font-size: 24
+    }
+    ELB1 -> AvailabilityZoneA.WebSubnet.WebServer: {class: purpleConnection}
+    ELB1 -> AvailabilityZoneB.WebSubnet.WebServer: {class: purpleConnection}
+    ELB2 -> AvailabilityZoneA.AppSubnet.AppServer: {class: lightBlueConnection}
+    ELB2 -> AvailabilityZoneB.AppSubnet.AppServer: {class: lightBlueConnection}
+
+    AvailabilityZoneA.WebSubnet.WebServer -> ELB2: {class: purpleConnection}
+    AvailabilityZoneA.WebSubnet.WebServer -> AutoScaling1: {
+      class: orangeConnection
+    }
+    AvailabilityZoneA.AppSubnet -> AutoScaling2: {
+      class: orangeConnection
+    }
+    AvailabilityZoneB.WebSubnet.WebServer -> ELB2: {
+      class: purpleConnection
+    }
+    AvailabilityZoneB.AppSubnet.AppServer -> AvailabilityZoneA.RDSSubnet.RDSPrimary: {
+      class: lightBlueConnection
+    }
+    AvailabilityZoneB.AppSubnet.AppServer -> AutoScaling2: {
+      class: orangeConnection
+    }
+    AvailabilityZoneB.WebSubnet.WebServer -> AutoScaling1: {
+      class: orangeConnection
+    }
+  }
+  Route53 -> Cloudfront
+  Cloudfront -> VPC.ELB1
+  Cloudfront -> S3
+}
+Users1 -> AWSCloud.Route53
+Users2 -> AWSCloud.Route53

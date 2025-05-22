@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+
+  "basics": {
+    "name": "Your Name",
+    "label": "Cloud & AI Strategist",
+    "image": "https://yourdomain.com/avatar.jpg",
+    "email": "you@example.com",
+    "phone": "+1-555-123-4567",
+    "url": "https://yourdomain.com",
+    "summary": "Hybrid technologist blending AI-native systems design with regulated cloud infrastructure expertise. Proven leader in FedRAMP, A2A/MCP protocols, and secure architecture at scale.",
+    "location": {
+      "city": "Denver",
+      "region": "CO",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "yourusername",
+        "url": "https://linkedin.com/in/yourusername"
+      },
+      {
+        "network": "GitHub",
+        "username": "yourhandle",
+        "url": "https://github.com/yourhandle"
+      },
+      {
+        "network": "Substack",
+        "username": "yournewsletter",
+        "url": "https://yournewsletter.substack.com"
+      }
+    ]
+  },
+
+  "work": [
+    {
+      "name": "Stealth Cloud Startup",
+      "position": "Principal Architect (Cloud + GenAI)",
+      "url": "https://stealthmode.com",
+      "startDate": "2023-01",
+      "endDate": "2024-12",
+      "summary": "Led the design and implementation of hybrid AI-native infrastructure supporting edge devices, LLM workflows, and continuous compliance across AWS + on-prem.",
+      "highlights": [
+        "Designed a custom Model Context Protocol (MCP) for secure LLM operations in a FedRAMP High boundary",
+        "Orchestrated agentic pipelines integrating LangChain, CrewAI, and event-driven microservices",
+        "Created multi-cloud landing zones using Terraform, AWS CDK, and Zero Trust network segmentation"
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "institution": "Your University",
+      "url": "https://university.edu",
+      "area": "Computer Science",
+      "degree": "B.S.",
+      "startDate": "2008-08",
+      "endDate": "2012-05",
+      "gpa": "3.8"
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Personal Resume Site",
+      "description": "Single-page application hosted on AWS, showcasing resume, projects, and blog. Built with React, Tailwind, GSAP, and containerized deployment.",
+      "url": "https://yourdomain.com",
+      "roles": ["Designer", "Full-stack Developer"],
+      "entity": "Personal Project",
+      "type": "website",
+      "technologies": ["React", "Tailwind CSS", "Framer Motion", "Docker", "AWS"],
+      "highlights": [
+        "Implements MCP-inspired architecture for dynamic context handling",
+        "CI/CD via GitHub Actions with IaC-managed S3 + CloudFront deployment",
+        "Scroll-based animations and responsive dark/light mode toggle"
+      ]
+    }
+  ],
+
+  "skills": [
+    {
+      "name": "Cloud Platforms",
+      "level": "Expert",
+      "keywords": ["AWS", "Azure", "GCP", "Terraform", "Kubernetes"]
+    },
+    {
+      "name": "GenAI & Automation",
+      "level": "Advanced",
+      "keywords": ["OpenAI", "LangChain", "CrewAI", "Vector DBs", "MCP/A2A"]
+    },
+    {
+      "name": "Security & Compliance",
+      "keywords": ["FedRAMP", "NIST 800-53", "Zero Trust", "SOC2", "CIS Benchmarks"]
+    }
+  ],
+
+  "certificates": [
+    {
+      "name": "AWS Certified Solutions Architect – Professional",
+      "issuer": "Amazon Web Services",
+      "date": "2024-02-01"
+    },
+    {
+      "name": "CKS (Certified Kubernetes Security Specialist)",
+      "issuer": "Linux Foundation",
+      "date": "2023-09-15"
+    }
+  ],
+
+  "meta": {
+    "version": "1.0.0",
+    "lastModified": "2025-05-20T12:00:00Z",
+    "custom": {
+      "now": {
+        "currentFocus": "Exploring AI-native agents, serverless orchestration, and LLM-driven workflows for public sector and regulated use cases.",
+        "currentProjects": [
+          "Personal resume site with dynamic JSON rendering",
+          "AI/LLM speech training app for verbal fluency and clarity",
+          "Containerized LangChain agents integrated with AWS Lambda + Step Functions"
+        ]
+      },
+      "siteFeatures": {
+        "theme": "Dark/Light Toggle",
+        "animations": "GSAP-based scroll animations",
+        "CI_CD": "GitHub Actions + AWS S3 + CloudFront",
+        "analytics": "Plausible.io (self-hosted)",
+        "resumeDownload": {
+          "formats": ["PDF", "Markdown", "JSON"],
+          "apiEndpoint": "/api/resume"
+        }
+      },
+      "easterEggs": {
+        "konamiCode": "Triggers CLI-style terminal overlay",
+        "hoverSecret": "Hidden message appears on profile pic hover"
+      }
+    }
+  }
+}
